@@ -1,6 +1,6 @@
 # Item Catalog Service (NestJS Backend)
 
-**Technical Challenge: Sistem Katalog Item**. Aplikasi ini adalah RESTful API backend yang dibangun menggunakan **NestJS**, **TypeORM (SQLite)**, dan mendukung **Containerization (Docker)**.
+**Technical Test: Item Catalog Service**. Aplikasi ini adalah RESTful API backend yang dibangun menggunakan **NestJS**, **TypeORM (SQLite)**, dan mendukung **Containerization (Docker)**.
 
 ## 📋 Deskripsi
 
