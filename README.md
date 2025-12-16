@@ -172,9 +172,9 @@ curl -X DELETE http://localhost:3000/items/1
 }
 ```
 
-## 🎥 Struktur Project
+## 🎥 Video Recording
 ```
-Link Video Recording: https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing 
+Link: https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing 
 ```
 
 ## 📁 Struktur Project
