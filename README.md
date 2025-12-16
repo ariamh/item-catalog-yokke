@@ -1,4 +1,3 @@
-```markdown
 # Item Catalog Service (NestJS Backend)
 
 **Technical Test: Item Catalog Service**. Aplikasi ini adalah RESTful API backend yang dibangun menggunakan **NestJS**, **TypeORM (SQLite)**, dan mendukung **Containerization (Docker)**.
