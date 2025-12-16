@@ -3,7 +3,7 @@ import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 
-@Controller('items')
+@Controller('api/items')
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
