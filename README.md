@@ -196,10 +196,6 @@ item-catalog/
 └── README.md
 ```
 
-## 📄 License
-
-MIT
-
 ## 👥 Kontributor
 
 - ARIA MUSTOFA HIDAYAT
