@@ -182,16 +182,6 @@ curl -X DELETE http://localhost:3000/api/items/1
 }
 ```
 
-### Error Response
-
-```json
-{
-  "statusCode": 400,
-  "message": ["price must be a positive number"],
-  "error": "Bad Request"
-}
-```
-
 ## 🎥 Screen Recording Link
 
 https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing
@@ -222,14 +212,3 @@ item-catalog/
 ├── tsconfig.json
 └── README.md
 ```
-```
-
-**Perbaikan yang dilakukan:**
-
-1. ✅ Menambahkan code block (```) untuk semua perintah bash/shell
-2. ✅ Memperbaiki struktur heading yang tidak konsisten
-3. ✅ Memisahkan code block yang tercampur dengan teks biasa
-4. ✅ Memperbaiki format JSON response
-5. ✅ Memperbaiki struktur folder tree
-6. ✅ Menambahkan syntax highlighting (bash, json) untuk readability yang lebih baik
-7. ✅ Memastikan semua URL dan endpoint terformat dengan benar
