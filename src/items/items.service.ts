@@ -4,15 +4,23 @@ import { UpdateItemDto } from './dto/update-item.dto';
 import { Item } from './entities/item.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Category } from 'src/categories/entities/category.entity';
 
 @Injectable()
 export class ItemsService {
 	constructor(
 		@InjectRepository(Item)
-		private itemsRepository: Repository<Item>
+		private itemsRepository: Repository<Item>,
+		@InjectRepository(Category)
+		private categoryRepository: Repository<Category>
 	) { }
 
-  async create(createItemDto: CreateItemDto): Promise<Item> {
+	async create(createItemDto: CreateItemDto): Promise<Item> {
+		const category = await this.categoryRepository.findOne({ where: { name: createItemDto.category } });
+		if (!category) {
+			throw new NotFoundException(`Category with name "${createItemDto.category}" not found`);
+		}
+
 		const existingItem = await this.itemsRepository.findOne({where: {title: createItemDto.title}})
 
 		if (existingItem) {
