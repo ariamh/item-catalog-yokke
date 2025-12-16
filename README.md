@@ -172,9 +172,9 @@ curl -X DELETE http://localhost:3000/items/1
 }
 ```
 
-## 🎥 Video Recording
+## 🎥 Video Recording Link
 ```
-Link: https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing 
+https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing 
 ```
 
 ## 📁 Struktur Project
@@ -200,7 +200,3 @@ item-catalog/
 ├── tsconfig.json
 └── README.md
 ```
-
-## 👥 Kontributor
-
-- ARIA MUSTOFA HIDAYAT
