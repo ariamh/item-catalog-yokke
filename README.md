@@ -7,7 +7,7 @@
 Sistem ini memungkinkan pengelolaan katalog item dengan fitur:
 
 - **CRUD Operasi:** Create, Read, Update, Partial Update, Delete.
-- **Validasi Ketat:** Input divalidasi menggunakan `class-validator` (misal: harga harus positif, kategori harus sesuai Enum).
+- **Validasi Ketat:** Input divalidasi menggunakan `class-validator`.
 - **Aturan Bisnis:**
   - Title item harus unik (Mencegah duplikasi).
   - Default filter hanya menampilkan item yang tersedia (`isAvailable: true`).
