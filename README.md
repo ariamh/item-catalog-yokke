@@ -172,7 +172,7 @@ curl -X DELETE http://localhost:3000/items/1
 }
 ```
 
-## 🎥 Video Recording Link
+## 🎥 Screen Recording Link
 ```
 https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing 
 ```
