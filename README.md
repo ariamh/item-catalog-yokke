@@ -1,3 +1,5 @@
+code
+Markdown
 # Item Catalog Service (NestJS Backend)
 
 **Technical Test: Item Catalog Service**. Aplikasi ini adalah RESTful API backend yang dibangun menggunakan **NestJS**, **TypeORM (SQLite)**, dan mendukung **Containerization (Docker)**.
@@ -27,172 +29,125 @@ Pastikan **Node.js** (v16+) sudah terinstall.
 
 ### 1. Clone Repository & Masuk ke Folder
 
-```bash
 git clone <URL_REPOSITORY_ANDA>
 cd item-catalog
-```
+2. Install Dependencies
 
-### 2. Install Dependencies
-
-```bash
 npm install
-```
+3. Jalankan Aplikasi (Mode Development)
 
-### 3. Jalankan Aplikasi (Mode Development)
-
-```bash
 npm run start:dev
-```
+Server akan berjalan di http://localhost:3000. Database db.sqlite akan dibuat otomatis.
+🐳 Cara Menjalankan dengan Docker
+Pastikan Docker Desktop sudah berjalan.
+1. Build Image
 
-Server akan berjalan di `http://localhost:3000`. Database `db.sqlite` akan dibuat otomatis.
-
-## 🐳 Cara Menjalankan dengan Docker
-
-Pastikan **Docker Desktop** sudah berjalan.
-
-### 1. Build Image
-
-```bash
 docker build -t item-catalog-img .
-```
+2. Jalankan Container
 
-### 2. Jalankan Container
-
-```bash
 docker run -p 3000:3000 item-catalog-img
-```
+Aplikasi dapat diakses di http://localhost:3000.
+🧪 Pengujian (Unit Test)
+Untuk menjalankan unit test pada ItemService (Logika Bisnis):
 
-Aplikasi dapat diakses di `http://localhost:3000`.
-
-## 🧪 Pengujian (Unit Test)
-
-Untuk menjalankan unit test pada *ItemService* (Logika Bisnis):
-
-```bash
 npm run test
-```
-
-## 📚 Dokumentasi API & Contoh Request
-
+📚 Dokumentasi API & Contoh Request
 Anda dapat menggunakan Postman, Insomnia, atau cURL untuk menguji endpoint berikut.
+Master Data Category
+1. Membuat Kategori Baru (POST)
+URL: /api/categories
 
-### 1. Membuat Item Baru (POST)
+curl -X POST http://localhost:3000/api/categories \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "ELECTRONICS"
+  }'
+2. Mengambil Semua Kategori (GET)
+URL: /api/categories
 
-**URL:** `/items`
+curl http://localhost:3000/api/categories
+Items
+1. Membuat Item Baru (POST)
+URL: /api/items
+Aturan: category harus sudah ada di Master Data.
 
-**Aturan:** title unik, price > 0, category harus valid ('ELECTRONICS', 'CLOTHING', 'FOOD').
-
-```bash
-curl -X POST http://localhost:3000/items \
+curl -X POST http://localhost:3000/api/items \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Macbook Pro M2",
     "category": "ELECTRONICS",
     "price": 2000,
     "isAvailable": true
-  }'
-```
-
+  }'```
 **Response:**
 - Sukses: `201 Created`
 - Gagal Validasi: `400 Bad Request`
 - Duplikasi: `409 Conflict`
 
-### 2. Mengambil Semua Item (GET)
-
-**URL:** `/items`
-
+#### 2. Mengambil Semua Item (GET)
+**URL:** `/api/items`
 **Filter:** Secara default hanya menampilkan item yang `isAvailable: true`.
 
-#### Get Active Items (Default):
+**Get Active Items (Default):**
 
-```bash
-curl http://localhost:3000/items
-```
+curl http://localhost:3000/api/items
+Get Inactive Items (Filter):
 
-#### Get Inactive Items (Filter):
+curl "http://localhost:3000/api/items?isAvailable=false"
+3. Mengambil Detail Item (GET)
+URL: /api/items/:id
 
-```bash
-curl "http://localhost:3000/items?isAvailable=false"
-```
+curl http://localhost:3000/api/items/1
+4. Update Item Parsial (PATCH)
+URL: /api/items/:id
 
-### 3. Mengambil Detail Item (GET)
-
-**URL:** `/items/:id`
-
-```bash
-curl http://localhost:3000/items/1
-```
-
-### 4. Update Item Parsial (PATCH)
-
-**URL:** `/items/:id`
-
-**Deskripsi:** Mengubah sebagian data saja (misal hanya harga).
-
-```bash
-curl -X PATCH http://localhost:3000/items/1 \
+curl -X PATCH http://localhost:3000/api/items/1 \
   -H "Content-Type: application/json" \
   -d '{
     "price": 1850
   }'
-```
+5. Menghapus Item (DELETE)
+URL: /api/items/:id
 
-### 5. Menghapus Item (DELETE)
+curl -X DELETE http://localhost:3000/api/items/1
+📝 Struktur Response
+Success Response
 
-**URL:** `/items/:id`
-
-```bash
-curl -X DELETE http://localhost:3000/items/1
-```
-
-## 📝 Struktur Response
-
-### Success Response
-
-```json
 {
   "id": 1,
   "title": "Macbook Pro M2",
   "category": "ELECTRONICS",
-  "price": 2000,
-  "isAvailable": true,
-  "createdAt": "2024-01-01T00:00:00.000Z",
-  "updatedAt": "2024-01-01T00:00:00.000Z"
+  "price": "2000",
+  "isAvailable": true
 }
-```
+Error Response
 
-### Error Response
-
-```json
 {
   "statusCode": 400,
   "message": ["price must be a positive number"],
   "error": "Bad Request"
 }
-```
+🎥 Screen Recording Link
 
-## 🎥 Screen Recording Link
-```
-https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing 
-```
+https://drive.google.com/file/d/1X4nxFTjoZmlB_BQJ6UAciCY1umL2bz0j/view?usp=sharing ```
 
 ## 📁 Struktur Project
-
-```
 item-catalog/
 ├── src/
-│   ├── items/
-│   │   ├── dto/
-│   │   │   ├── create-item.dto.ts
-│   │   │   └── update-item.dto.ts
-│   │   ├── entities/
-│   │   │   └── item.entity.ts
-│   │   ├── items.controller.ts
-│   │   ├── items.service.ts
-│   │   └── items.module.ts
-│   ├── app.module.ts
-│   └── main.ts
+│ ├── items/
+│ │ ├── dto/
+│ │ ├── entities/
+│ │ ├── items.controller.ts
+│ │ ├── items.service.ts
+│ │ └── items.module.ts
+│ ├── categories/
+│ │ ├── dto/
+│ │ ├── entities/
+│ │ ├── categories.controller.ts
+│ │ ├── categories.service.ts
+│ │ └── categories.module.ts
+│ ├── app.module.ts
+│ └── main.ts
 ├── test/
 ├── .dockerignore
 ├── Dockerfile
